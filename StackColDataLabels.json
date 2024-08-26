@@ -1,0 +1,217 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "usermeta": {
+    "information": {
+      "uuid": "84c1343d-200b-4f17-9a09-41c8f95e8d24",
+      "generated": "2024-08-26T17:56:09.482Z",
+      "previewImageBase64PNG": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=",
+      "name": "Stacked Column with Individual and Total Data Labels",
+      "author": "Meagan Longoria"
+    },
+    "deneb": {
+      "build": "1.7.1.0",
+      "metaVersion": 1,
+      "provider": "vegaLite",
+      "providerVersion": "5.20.1"
+    },
+    "interactivity": {
+      "tooltip": true,
+      "contextMenu": true,
+      "selection": false,
+      "selectionMode": "simple",
+      "highlight": false,
+      "dataPointLimit": 50
+    },
+    "config": "{\n  \"params\": [\n    {\n      \"name\": \"_font\",\n      \"value\": \"Segoe UI, wf_standard-font, helvetica, sans-serif\"\n    }\n  ],\n  \"view\": {\n    \"stroke\": \"transparent\"\n  },\n  \"font\": {\n    \"expr\": \"_font\"\n  },\n  \"arc\": {},\n  \"area\": {\n    \"line\": true,\n    \"opacity\": 0.6\n  },\n  \"bar\": {\n    \"strokeWidth\": 1,\n    \"discreteBandSize\": {\n      \"band\": 0.8\n    },\n    \"continuousBandSize\": {\n      \"band\": 0.8\n    }\n  },\n  \"line\": {\n    \"strokeWidth\": 3,\n    \"strokeCap\": \"round\",\n    \"strokeJoin\": \"round\"\n  },\n  \"path\": {},\n  \"point\": {\n    \"filled\": true,\n    \"size\": 75\n  },\n  \"rect\": {},\n  \"shape\": {},\n  \"symbol\": {\n    \"strokeWidth\": 1,\n    \"size\": 50\n  },\n  \"text\": {\n    \"font\": \"Segoe UI\",\n    \"fontSize\": 12,\n    \"fill\": \"#605E5C\"\n  },\n  \"axis\": {\n    \"ticks\": false,\n    \"grid\": false,\n    \"domain\": false,\n    \"labelColor\": \"#605E5C\",\n    \"labelFontSize\": 11,\n    \"labelAngle\": 0,\n    \"titleFont\": {\n      \"expr\": \"_font\"\n    },\n    \"titleColor\": \"#252423\",\n    \"titleFontSize\": 11,\n    \"titleFontWeight\": \"normal\"\n  },\n  \"axisQuantitative\": {\n    \"tickCount\": 3,\n    \"grid\": true,\n    \"gridColor\": \"#C8C6C4\",\n    \"gridDash\": [\n      1,\n      5\n    ],\n    \"labelFlush\": false\n  },\n  \"axisX\": {\n    \"labelPadding\": 5\n  },\n  \"axisY\": {\n    \"labelPadding\": 10\n  },\n  \"header\": {\n    \"titleFont\": {\n      \"expr\": \"_font\"\n    },\n    \"titleFontSize\": 11,\n    \"titleColor\": \"#252423\",\n    \"labelFont\": {\n      \"expr\": \"_font\"\n    },\n    \"labelFontSize\": 11,\n    \"labelColor\": \"#605E5C\"\n  },\n  \"legend\": {\n    \"title\": null,\n    \"titleFont\": {\n      \"expr\": \"_font\"\n    },\n    \"titleFontWeight\": \"bold\",\n    \"titleColor\": \"#605E5C\",\n    \"labelFont\": {\n      \"expr\": \"_font\"\n    },\n    \"labelFontSize\": 11,\n    \"labelColor\": \"#605E5C\",\n    \"symbolType\": \"square\",\n    \"direction\": \"vertical\",\n    \"orient\": \"left\",\n    \"symbolSize\": 200,\n    \"padding\": 10,\n    \"strokeWidth\": 1\n  },\n  \"concat\": {\n    \"spacing\": 10\n  }\n}",
+    "dataset": [
+      {
+        "key": "__0__",
+        "name": "variety",
+        "description": "",
+        "kind": "column",
+        "type": "text"
+      },
+      {
+        "key": "__1__",
+        "name": "site",
+        "description": "",
+        "kind": "column",
+        "type": "text"
+      },
+      {
+        "key": "__2__",
+        "name": "yield",
+        "description": "",
+        "kind": "measure",
+        "type": "numeric"
+      }
+    ]
+  },
+  "data": {
+    "name": "dataset"
+  },
+  "resolve": {
+    "scale": {
+      "color": "independent"
+    }
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "stroke": "#666666"
+      },
+      "encoding": {
+        "x": {
+          "field": "__0__",
+          "type": "ordinal",
+          "axis": {
+            "title": null
+          },
+          "sort": {
+            "op": "sum",
+            "field": "__2__"
+          }
+        },
+        "y": {
+          "aggregate": "sum",
+          "field": "__2__",
+          "type": "quantitative",
+          "stack": "zero",
+          "axis": {
+            "title": null,
+            "tickCount": 5
+          }
+        },
+        "color": {
+          "field": "__1__",
+          "type": "nominal",
+          "scale": {
+            "range": [
+              {
+                "expr": "pbiColor(0)"
+              },
+              {
+                "expr": "pbiColor(1)"
+              },
+              {
+                "expr": "pbiColor(2)"
+              },
+              {
+                "expr": "pbiColor(3)"
+              },
+              {
+                "expr": "pbiColor(4)"
+              },
+              {
+                "expr": "pbiColor(5)"
+              }
+            ]
+          }
+        },
+        "tooltip": [
+          {
+            "field": "__0__",
+            "type": "nominal"
+          },
+          {
+            "field": "__1__",
+            "type": "nominal"
+          },
+          {
+            "field": "__2__",
+            "type": "quantitative",
+            "format": ".2f"
+          }
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "top",
+        "color": "black",
+        "dx": 0,
+        "dy": 3
+      },
+      "transform": [
+        {
+          "filter": "datum['__2__'] > .45"
+        }
+      ],
+      "encoding": {
+        "detail": {
+          "type": "nominal",
+          "field": "__1__"
+        },
+        "text": {
+          "field": "__2____formatted",
+          "type": "quantitative",
+          "aggregate": "sum"
+        },
+        "y": {
+          "aggregate": "sum",
+          "field": "__2__",
+          "type": "quantitative",
+          "stack": "zero"
+        },
+        "x": {
+          "field": "__0__",
+          "type": "nominal",
+          "sort": {
+            "op": "sum",
+            "field": "__2__"
+          }
+        }
+      }
+    },
+    {
+      "transform": [
+        {
+          "aggregate": [
+            {
+              "op": "sum",
+              "field": "__2__",
+              "as": "total"
+            }
+          ],
+          "groupby": [
+            "__0__"
+          ]
+        }
+      ],
+      "mark": {
+        "type": "text",
+        "align": "center",
+        "baseline": "bottom",
+        "color": "black",
+        "dy": -8
+      },
+      "encoding": {
+        "text": {
+          "field": "total",
+          "aggregate": "sum",
+          "type": "quantitative",
+          "format": ",.0f"
+        },
+        "y": {
+          "field": "total",
+          "type": "quantitative",
+          "axis": {
+            "title": null,
+            "tickCount": 5
+          }
+        },
+        "x": {
+          "field": "__0__",
+          "type": "nominal",
+          "sort": {
+            "op": "sum",
+            "field": "__2__"
+          }
+        }
+      }
+    }
+  ]
+}
